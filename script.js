@@ -55,10 +55,6 @@ setInterval(() => {
     document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
 }, 1000);
 
-/* ========================= */
-/* --- CAROUSEL FIXED --- */
-/* ========================= */
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const track = document.querySelector(".carousel-track");
@@ -75,12 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         isAnimating = true;
 
-        track.style.transition = "transform 0.5s ease-in-out";
         track.style.transform = `translateX(-${index * 100}%)`;
 
         setTimeout(() => {
             isAnimating = false;
-        }, 500); // match transition duration
+        }, 500);
     }
 
     function nextSlide() {
