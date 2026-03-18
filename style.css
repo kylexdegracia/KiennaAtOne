@@ -216,14 +216,12 @@ background-attachment:fixed;
         white-space: nowrap;   /* Prevents single words from breaking */
     }
 
-    /* Adjust underline for mobile: make it stay a bit longer so it's visible on tap */
     .navbar a::after {
         height: 2px;
         bottom: -1px;
     }
 }
 
-/* Extra small phones (iPhone SE, etc.) */
 @media (max-width: 380px) {
     .navbar {
         gap: 10px 12px;
@@ -351,13 +349,11 @@ margin:40px 0;
   background: white; /* Backdrop for loading images */
 }
 
-/* --- THE TRACK (The long line of images) --- */
 .carousel-track {
   display: flex;
   transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1); /* Elegant, smooth slide */
 }
 
-/* --- THE FULL IMAGES --- */
 .carousel-img {
   min-width: 100%; /* Each image is exactly the width of the .carousel */
   height: 550px;   /* Fixed height for a uniform look */
@@ -516,12 +512,15 @@ border-radius:10px;
 }
 
 
-/* --- EVENT DETAILS  --- */
+/* --- EVENT DETAILS --- */
 .details {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
     justify-content: center;
+    width: 100%; /* Ensures the container spans the full screen */
+    padding: 0;
+    margin: 0 auto;
 }
 
 .card {
@@ -530,35 +529,39 @@ border-radius:10px;
     border-radius: 15px;
     width: 350px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    /* New Centering Rules */
     text-align: center; 
     display: flex;
     flex-direction: column;
     align-items: center; 
+    margin: 0 auto; /* Centers the card if it wraps to a new line */
 }
 
-.card iframe {
-    height: 220px;
-    width: 100%;       
-    display: block;      
-    margin: 15px auto;   
-    border-radius: 12px;
-    border: 0;
-}
-
+/* --- MOBILE RESPONSIVE FIXES --- */
 @media (max-width: 768px) {
-    /* Fixes the "off-center" look on small devices */
+    .details {
+        flex-direction: column; /* Stacks cards vertically on phones */
+        align-items: center;    /* Centers the stack */
+    }
+
     .card {
-        width: 100%;
+        width: 90% !important;  /* Makes card responsive to phone width */
         max-width: 320px; 
-        margin: 10px auto;
-        text-align: center;
+        margin: 10px auto !important; /* Forces perfect horizontal centering */
+    }
+
+    /* Fixed centering for the Map inside the card */
+    .card iframe {
+        width: 100% !important; 
+        height: 220px;
+        margin: 15px 0; /* Vertical margin only, horizontal handled by flex center */
+        display: block;
     }
 
     .godparents-container, 
     .two-column-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         max-width: 95%;
+        margin: 0 auto;
     }
 }
 
