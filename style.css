@@ -105,8 +105,6 @@ background-attachment:fixed;
 
 
 /* NAVBAR */
-
-/* NAVBAR - UPDATED DESIGN */
 .navbar {
     position: sticky;
     top: 0;
@@ -198,22 +196,21 @@ background-attachment:fixed;
     width: 100%;
 }
 
-/* --- MOBILE RESPONSIVE FIX --- */
 @media (max-width: 768px) {
     .navbar {
         display: flex;
-        flex-wrap: wrap;       /* Allows links to move to a new line if they run out of space */
+        flex-wrap: wrap;       
         justify-content: center;
-        gap: 12px 18px;        /* 12px vertical gap, 18px horizontal gap */
+        gap: 12px 18px;        
         padding: 15px 10px;
-        width: 95%;            /* Ensures it doesn't touch the screen edges */
+        width: 95%;            
         margin: 0 auto;
     }
 
     .navbar a {
-        font-size: 13px;       /* Slightly larger than 12px for better readability */
+        font-size: 13px;       
         letter-spacing: 0.3px;
-        white-space: nowrap;   /* Prevents single words from breaking */
+        white-space: nowrap;   
     }
 
     .navbar a::after {
@@ -240,7 +237,6 @@ background-attachment:fixed;
     text-align: center;
     padding: 120px 20px;
     position: relative;
-    /* Updated Hero to match the section background image */
     background: url("images/photo22.png") center/cover no-repeat;
 }
 
@@ -512,14 +508,15 @@ border-radius:10px;
 }
 
 
-/* --- EVENT DETAILS --- */
+/* =========================================
+   EVENT DETAILS & LOCATION GUIDE
+   ========================================= */
 .details {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
     justify-content: center;
-    width: 100%; /* Ensures the container spans the full screen */
-    padding: 0;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -533,35 +530,51 @@ border-radius:10px;
     display: flex;
     flex-direction: column;
     align-items: center; 
-    margin: 0 auto; /* Centers the card if it wraps to a new line */
+    margin: 10px;
 }
 
-/* --- MOBILE RESPONSIVE FIXES --- */
+.card iframe {
+    height: 220px;
+    width: 100%;       
+    display: block;      
+    margin: 15px auto;   
+    border-radius: 12px;
+    border: 0;
+}
+
+/* =========================================
+   MOBILE RESPONSIVE (CONSOLIDATED)
+   ========================================= */
 @media (max-width: 768px) {
+    /* Fixes Navbar wrapping */
+    .navbar {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 10px;
+    }
+
+    /* FIXES THE SHIFTING CARDS & MAPS */
     .details {
-        flex-direction: column; /* Stacks cards vertically on phones */
-        align-items: center;    /* Centers the stack */
+        flex-direction: column;
+        align-items: center;
     }
 
     .card {
-        width: 90% !important;  /* Makes card responsive to phone width */
-        max-width: 320px; 
-        margin: 10px auto !important; /* Forces perfect horizontal centering */
+        width: 90% !important; 
+        max-width: 320px;
+        margin: 15px auto !important; /* FORCES CENTER */
     }
 
-    /* Fixed centering for the Map inside the card */
-    .card iframe {
-        width: 100% !important; 
-        height: 220px;
-        margin: 15px 0; /* Vertical margin only, horizontal handled by flex center */
-        display: block;
-    }
-
-    .godparents-container, 
-    .two-column-grid {
+    /* GODPARENTS GRID FIX */
+    .godparents-container {
         grid-template-columns: repeat(2, 1fr) !important;
         max-width: 95%;
         margin: 0 auto;
+    }
+
+    .two-column-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        margin: 10px auto;
     }
 }
 
@@ -569,6 +582,10 @@ border-radius:10px;
     .godparents-container, 
     .two-column-grid {
         grid-template-columns: 1fr !important;
+    }
+    
+    .hero h1 {
+        font-size: 1.6rem;
     }
 }
 
