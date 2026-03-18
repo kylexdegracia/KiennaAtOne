@@ -55,29 +55,67 @@ setInterval(() => {
     document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
 }, 1000);
 
-/* --- CAROUSEL --- */
-const track = document.querySelector(".carousel-track");
-const slides = document.querySelectorAll(".carousel-img");
-let index = 0;
+/* ========================= */
+/* --- CAROUSEL FIXED --- */
+/* ========================= */
 
-function updateCarousel() {
-    if (track) track.style.transform = `translateX(-${index * 100}%)`;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-document.querySelector(".next")?.addEventListener("click", () => {
-    index = (index + 1) % slides.length;
-    updateCarousel();
+    const track = document.querySelector(".carousel-track");
+    const slides = document.querySelectorAll(".carousel-img");
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+
+    let index = 0;
+    let isAnimating = false;
+    let autoSlide;
+
+    function updateCarousel() {
+        if (!track) return;
+
+        isAnimating = true;
+
+        track.style.transition = "transform 0.5s ease-in-out";
+        track.style.transform = `translateX(-${index * 100}%)`;
+
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500); // match transition duration
+    }
+
+    function nextSlide() {
+        if (isAnimating) return;
+
+        index = (index + 1) % slides.length;
+        updateCarousel();
+        resetAutoSlide();
+    }
+
+    function prevSlide() {
+        if (isAnimating) return;
+
+        index = (index - 1 + slides.length) % slides.length;
+        updateCarousel();
+        resetAutoSlide();
+    }
+
+    function startAutoSlide() {
+        autoSlide = setInterval(() => {
+            index = (index + 1) % slides.length;
+            updateCarousel();
+        }, 4000);
+    }
+
+    function resetAutoSlide() {
+        clearInterval(autoSlide);
+        startAutoSlide();
+    }
+
+    nextBtn?.addEventListener("click", nextSlide);
+    prevBtn?.addEventListener("click", prevSlide);
+
+    startAutoSlide();
 });
-
-document.querySelector(".prev")?.addEventListener("click", () => {
-    index = (index - 1 + slides.length) % slides.length;
-    updateCarousel();
-});
-
-setInterval(() => {
-    index = (index + 1) % slides.length;
-    updateCarousel();
-}, 4000);
 
 /* --- BACK TO TOP LOGIC --- */
 let mybutton = document.getElementById("myBtn");
