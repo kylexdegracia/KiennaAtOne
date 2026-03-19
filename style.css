@@ -476,6 +476,55 @@ margin:40px 0;
     }
 }
 
+@media (max-width: 768px) {
+    .godparents-container {
+        grid-template-columns: 1fr;
+    }
+
+    .godparent-card {
+        grid-column: auto !important;
+    }
+}
+
+/* CUSTOM LAST 7 LAYOUT */
+
+/* Kaavi (7th from last) → LEFT */
+.godparent-card:nth-last-child(7) {
+    grid-column: 1 / 2;
+}
+
+/* Tokie (6th from last) → CENTER */
+.godparent-card:nth-last-child(6) {
+    grid-column: 2 / 3;
+}
+
+/* Nikki (5th from last) → RIGHT */
+.godparent-card:nth-last-child(5) {
+    grid-column: 3 / 4;
+}
+
+/* Jose (4th from last) → CENTER LEFT */
+.godparent-card:nth-last-child(4) {
+    grid-column: 2 / 3;
+}
+
+/* Queenie (3rd from last) → CENTER RIGHT */
+.godparent-card:nth-last-child(3) {
+    grid-column: 3 / 4;
+}
+
+/* Anton (2nd from last) → CENTER LEFT */
+.godparent-card:nth-last-child(2) {
+    grid-column: 2 / 3;
+}
+
+/* Evan (last) → CENTER RIGHT */
+.godparent-card:nth-last-child(1) {
+    grid-column: 3 / 4;
+}
+
+
+
 
 /* DRESS CODE */
 
